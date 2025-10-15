@@ -1,0 +1,610 @@
+/* hero */
+.hero {
+  position: relative;
+  height: 680px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0; /* ensure behind everything */
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20,33,104,0.7) 0%, rgba(15,23,64,0.55) 100%);
+  z-index: 0;
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 40px 16px;
+}
+.hero-title {
+  font-size: 40px;
+  line-height: 1.03;
+  margin: 0 0 12px;
+  font-weight: 800;
+}
+.hero-sub {
+  margin: 0 auto 18px;
+  max-width: 720px;
+  color: rgba(255,255,255,0.92);
+}
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+}
+.btn.primary {
+  background: linear-gradient(90deg, var(--brand-deep), var(--brand-deep-alt));
+  color: white;
+}
+.btn.ghost {
+  background: white;
+  color: var(--brand-deep);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.btn.small { padding: 8px 14px; }
+.btn.full { width: 100%; }
+
+/* NBN section container positioning */
+.nbn-section {
+  position: relative;
+  z-index: 2;
+  padding: 120px 0 80px; /* increased top padding slightly */
+  background: transparent;
+}
+
+.nbn-section .container {
+  position: relative;
+  top: 30px; /* moves it visually down into the middle */
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(20, 33, 104, 0.15);
+  max-width: 900px;
+  margin: 0 auto 80px;
+  padding: 60px 40px;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Fix search bar background/input layering */
+.nbn-search-bar {
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  max-width: 640px;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.nbn-search-bar input {
+  flex: 1;
+  padding: 14px 18px;
+  border: none;
+  outline: none;
+  border-radius: 999px;
+  background: transparent; /* removes grey inset oval */
+  font-size: 16px;
+  color: #111827;
+}
+
+.nbn-search-bar button {
+  background: linear-gradient(90deg, #1B5FC1, #142168);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 13px 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.nbn-search-bar button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(20, 33, 104, 0.35);
+}
+
+/* === SUGGESTIONS === */
+.suggestions {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  max-width: 640px;
+  margin: 12px auto 0;
+  padding: 10px;
+  list-style: none;
+  z-index: 10;
+  position: relative;
+}
+
+.suggestions li {
+  padding: 12px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #111827;
+  transition: background 0.15s ease;
+}
+
+.suggestions li:hover {
+  background: #f3f4f6;
+}
+
+/* === NBN RESULTS === */
+.nbn-results {
+  margin-top: 20px;
+  text-align: left;
+  animation: fadeIn 0.35s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.nbn-results-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(10, 20, 50, 0.06);
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.nbn-results-card h4 {
+  color: #142168;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.nbn-results-card p {
+  color: #4b5563;
+  font-size: 14px;
+}
+
+
+/* Solutions */
+.solutions {
+  padding: 48px 0;
+  background: var(--light);
+}
+.section-title {
+  text-align: center;
+  color: var(--brand-deep);
+  font-size: 28px;
+  margin: 0 0 20px;
+}
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+.tile {
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.tile:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 32px rgba(10,20,50,0.08);
+}
+.tile h3 { margin: 0 0 6px; color: var(--brand-deep); font-size: 16px; }
+.tile p { margin: 0; color: var(--muted); font-size: 14px; }
+
+/* Plans teaser */
+.plans-teaser {
+  padding: 48px 0;
+  background: white;
+}
+.teaser-inner { text-align: center; }
+.plan-cards {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+  justify-items: center;
+  margin-top: 18px;
+}
+.plan-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 14px;
+  padding: 22px;
+  background: #f3f8ff;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(12,20,50,0.04);
+}
+.plan-price {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--brand-deep);
+  margin-bottom: 6px;
+}
+.plan-name {
+  color: var(--brand-deep);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.plan-features {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+}
+.plan-note {
+  color: #9aa1b2;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+/* Reviews */
+.reviews {
+  padding: 48px 0;
+  background: var(--light);
+}
+.reviews-viewport { overflow: hidden; margin-top: 18px; }
+.reviews-track {
+  display: flex;
+  gap: 16px;
+  animation: scroll-left 30s linear infinite;
+  padding: 12px;
+}
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.review-card {
+  min-width: 320px;
+  max-width: 320px;
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(12,20,50,0.06);
+}
+.review-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+}
+.review-name { font-weight: 700; color: var(--brand-deep); }
+.review-role { font-size: 12px; color: var(--muted); }
+.review-text { color: #374151; margin: 8px 0; font-style: italic; }
+.review-stars { color: #f59e0b; margin-top: 8px; }
+
+/* CTA band */
+.cta-band {
+  padding: 28px 0;
+  color: white;
+  background: linear-gradient(90deg, var(--brand-deep), var(--brand-deep-alt));
+  text-align: center;
+}
+
+/* NBN Search Section */
+.nbn-search {
+  background: white;
+  padding: 70px 0;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+.nbn-search .container {
+  background: #fff;
+  border-radius: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 40px;
+  box-shadow: 0 10px 30px rgba(15, 23, 64, 0.1);
+}
+
+.nbn-search .section-title {
+  color: var(--brand-deep);
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.nbn-search p {
+  color: var(--muted);
+  margin-bottom: 28px;
+  font-size: 15px;
+}
+
+/* Search bar */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 480px;
+  padding: 14px 20px;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.search-bar input:focus {
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 3px rgba(27, 95, 193, 0.2);
+}
+
+.search-bar button {
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(90deg, var(--brand-deep), var(--brand-deep-alt));
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 8px rgba(20, 33, 104, 0.2);
+}
+
+.search-bar button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(27, 95, 193, 0.4);
+}
+
+/* Address suggestions dropdown */
+.suggestions {
+  list-style: none;
+  padding: 0;
+  margin: 16px auto 0;
+  max-width: 480px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(10, 20, 50, 0.08);
+  overflow: hidden;
+}
+
+.suggestions li {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.suggestions li:hover {
+  background: #f3f8ff;
+}
+
+/* Entire NBN section as a floating box */
+.nbn-section {
+  position: relative;
+  z-index: 2;
+  padding: 80px 0;
+  background: transparent;
+}
+
+.nbn-section .container {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: -80px auto 60px; /* pulls up to hover over hero */
+  padding: 60px 40px;
+  text-align: center;
+  position: relative;
+}
+
+/* Title and description inside the box */
+.nbn-section .section-title {
+  color: #142168;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.nbn-section .muted {
+  color: #6b7280;
+  margin-bottom: 24px;
+  font-size: 1rem;
+}
+
+/* The search bar itself inside the box */
+.nbn-search-bar {
+  background: #f9fafb;
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: inset 0 0 0 1px #e5e7eb;
+  padding: 10px 14px;
+  max-width: 640px;
+  margin: 0 auto 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.nbn-search-bar input {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  outline: none;
+  border-radius: 999px;
+  background: transparent;
+  font-size: 16px;
+}
+
+.nbn-search-bar input:focus {
+  box-shadow: 0 0 0 2px rgba(27, 95, 193, 0.3);
+}
+
+.nbn-search-bar button {
+  background: linear-gradient(90deg, #142168, #1B5FC1);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 28px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.nbn-search-bar button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(20, 33, 104, 0.3);
+}
+
+/* Suggestions list floating below input */
+.suggestions {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  max-width: 640px;
+  margin: 10px auto 0;
+  padding: 10px;
+  list-style: none;
+  z-index: 10;
+  position: relative;
+}
+
+.suggestions li {
+  padding: 12px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #111827;
+  transition: background 0.15s ease;
+}
+
+.suggestions li:hover {
+  background: #f3f4f6;
+}
+
+/* Results box inside */
+.nbn-section .container > div {
+  text-align: left;
+  margin-top: 20px;
+}
+
+/* keeps the card a touch lower in that gap */
+.nbn-section .container {
+  top: 30px;
+}
+
+/* wrap so suggestions can anchor to the bar */
+.nbn-search-wrap {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto 20px;
+}
+
+/* SINGLE pill background (no inner oval) */
+.nbn-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(17, 24, 39, 0.08);
+}
+
+/* kill the inner layer look */
+.nbn-search-bar input {
+  flex: 1;
+  padding: 14px 18px;
+  border: none !important;
+  outline: none;
+  border-radius: 999px;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-size: 16px;
+  color: #111827;
+}
+.nbn-search-bar input::placeholder { color: #9aa1b2; }
+
+/* button */
+.nbn-search-bar button {
+  background: linear-gradient(90deg, #1B5FC1, #142168);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 26px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.nbn-search-bar button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(27, 95, 193, 0.35);
+}
+
+/* suggestions anchored to the pill */
+.suggestions {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(17, 24, 39, 0.12);
+  z-index: 200;
+}
+.suggestions li {
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.suggestions li:hover {
+  background: #f3f4f6;
+}
