@@ -1,0 +1,52 @@
+.site-footer {
+  color: white;
+  background: var(--brand-deep);
+  padding: 36px 0 14px 0;
+  margin-top: 48px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.footer-logo { height: 52px; }
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 8px; }
+
+.socials a {
+  margin-right: 10px;
+  color: white;
+  opacity: 0.95;
+  text-decoration: none;
+}
+
+.subscribe-form { display: flex; gap: 8px; }
+.subscribe-form input {
+  padding: 10px;
+  border-radius: 999px;
+  border: 0;
+  outline: 0;
+}
+.subscribe-form button {
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 0;
+  color: white;
+  background: linear-gradient(90deg, var(--brand-deep), var(--brand-deep-alt));
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}

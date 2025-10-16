@@ -1,66 +1,37 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { FaFacebookF, FaTwitter, FaInstagram, FaGooglePlusG } from "react-icons/fa";
+import "./utils.css"; // if you use shared utilities like .two-col or .muted
 
-const Footer: React.FC = () => {
+
+export default function About(): JSX.Element {
   return (
-    <footer className="footer">
-      <div className="footer-inner">
-        <div>
-          <div className="footer-logo">
-            <img
-              src="/assets/Blue Logo.png"
-              alt="logo"
-              onError={(e) => {
-                (e.currentTarget as HTMLImageElement).src = "/assets/Blue Logo.svg";
-              }}
-            />
-            <h3>JORTEL</h3>
+    <main className="page">
+      <div className="container">
+        <h1>About Jortel Communications</h1>
+        <p className="muted">
+          Australian-owned telco delivering mobile, NBN and business telecoms with local support and transparent pricing.
+        </p>
+
+        <div className="two-col">
+          <div>
+            <h3>Our Story</h3>
+            <p>
+              Jortel was founded to provide reliable, honest telecom solutions to Australian businesses and households.
+              We combine national network reach with personalised local support so customers get the best of both worlds.
+            </p>
+            <button className="btn primary">Learn More</button>
           </div>
-          <p>
-            One unified team to consult, deliver and manage your solution to
-            achieve your ambitious business outcomes.
-          </p>
-          <div className="footer-socials">
-            <a href="#"><FaFacebookF /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaGooglePlusG /></a>
-            <a href="#"><FaInstagram /></a>
+
+          <div className="card pale">
+            <h4>Why choose us?</h4>
+            <ul>
+              <li>Coverage across 98%+ population using Telstra’s network</li>
+              <li>No lock-in contracts or hidden fees</li>
+              <li>Generous data and rollover on many plans</li>
+              <li>Friendly Australian-based support</li>
+            </ul>
           </div>
-        </div>
-
-        <div>
-          <h4>Quick Links</h4>
-          <ul>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/plans">Plans</Link></li>
-            <li><Link to="/contact">Contact Us</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Get in Touch</h4>
-          <ul>
-            <li><strong>Call:</strong> 1300 JORTEL (567 835)</li>
-            <li><strong>Email:</strong> info@jortel.com.au</li>
-            <li><strong>Address:</strong> Suite 7B, 256F New Line Road, Dural NSW 2158</li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Subscribe</h4>
-          <p>Stay up to date with our latest news and products</p>
-          <form className="subscribe-form">
-            <input type="email" placeholder="Type your email" />
-            <button type="submit">➤</button>
-          </form>
         </div>
       </div>
-      <div className="footer-bottom">
-        © {new Date().getFullYear()} Jortel Communications. All rights reserved.
-      </div>
-    </footer>
+    </main>
   );
-};
-
-export default Footer;
+}

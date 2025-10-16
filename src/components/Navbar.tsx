@@ -1,38 +1,49 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
+import "./Navbar.css"; // Navbar-specific styles
 
-const Navbar: React.FC = () => {
+
+const navLinks = [
+  { to: "/", label: "Home" },
+  { to: "/plans", label: "Plans" },
+  { to: "/about", label: "About Us" },
+  { to: "/contact", label: "Contact Us" },
+];
+
+export default function Navbar(): JSX.Element {
   const [open, setOpen] = useState(false);
-  const navLinks = [
-    { to: "/", label: "Home" },
-    { to: "/plans", label: "Plans" },
-    { to: "/about", label: "About Us" },
-    { to: "/contact", label: "Contact Us" },
-  ];
 
   return (
-    <header className="navbar">
-      <div className="navbar-inner">
-        <div className="nav-left">
-          <img
-            src="/assets/Blue Logo.png"
-            alt="Jortel Logo"
-            className="nav-logo"
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = "/assets/Blue Logo.svg";
-            }}
-          />
+    <header className="site-header">
+      <div className="header-gradient" />
+      <div className="container header-inner">
+        <div className="brand">
+          <Link to="/" onClick={() => setOpen(false)}>
+            <img
+              src="/assets/Blue Logo.png"
+              alt="Jortel Logo"
+              className="brand-logo"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).onerror = null;
+                (e.currentTarget as HTMLImageElement).src =
+                  "/assets/Blue Logo.svg";
+              }}
+              style={{ cursor: "pointer" }}
+            />
+          </Link>
         </div>
 
-        <nav className={`nav-links ${open ? "open" : ""}`}>
+        <nav className={`main-nav ${open ? "open" : ""}`}>
           {navLinks.map(({ to, label }) => (
             <NavLink
               key={to}
               to={to}
-              onClick={() => setOpen(false)}
+              end={to === "/"}
               className={({ isActive }) =>
-                isActive ? "nav-item active" : "nav-item"
+                isActive ? "nav-link active" : "nav-link"
               }
+              onClick={() => setOpen(false)}
             >
               {label}
             </NavLink>
@@ -40,15 +51,31 @@ const Navbar: React.FC = () => {
         </nav>
 
         <button
-          className="menu-toggle"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle Menu"
+          className="mobile-toggle"
+          aria-label="Toggle menu"
+          onClick={() => setOpen((s) => !s)}
         >
-          ☰
+          {open ? <FaTimes /> : <FaBars />}
         </button>
       </div>
+
+      {open && (
+        <div className="mobile-menu">
+          {navLinks.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={to === "/"}
+              className={({ isActive }) =>
+                isActive ? "mobile-nav-link active" : "mobile-nav-link"
+              }
+              onClick={() => setOpen(false)}
+            >
+              {label}
+            </NavLink>
+          ))}
+        </div>
+      )}
     </header>
   );
-};
-
-export default Navbar;
+}

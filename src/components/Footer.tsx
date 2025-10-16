@@ -1,37 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaFacebookF, FaTwitter, FaInstagram, FaGooglePlusG } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaGooglePlusG, FaInstagram } from "react-icons/fa";
+import "./Footer.css"; // Footer-specific styles
 
-const Footer: React.FC = () => {
+
+export default function Footer(): JSX.Element {
   return (
-    <footer className="footer">
-      <div className="footer-inner">
+    <footer className="site-footer">
+      <div className="container footer-grid">
         <div>
-          <div className="footer-logo">
+          <div className="footer-brand">
             <img
               src="/assets/Blue Logo.png"
-              alt="logo"
+              alt="Jortel logo"
+              className="footer-logo"
+              style={{ height: "40px", width: "auto" }}
               onError={(e) => {
-                (e.currentTarget as HTMLImageElement).src = "/assets/Blue Logo.svg";
+                (e.currentTarget as HTMLImageElement).onerror = null;
+                (e.currentTarget as HTMLImageElement).src =
+                  "/assets/Blue Logo.svg";
               }}
             />
-            <h3>JORTEL</h3>
           </div>
-          <p>
-            One unified team to consult, deliver and manage your solution to
-            achieve your ambitious business outcomes.
+          <p className="muted">
+            One unified team to consult, deliver and manage your solution to achieve your ambitious business outcomes.
           </p>
-          <div className="footer-socials">
-            <a href="#"><FaFacebookF /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaGooglePlusG /></a>
-            <a href="#"><FaInstagram /></a>
+          <div className="socials">
+            <a aria-label="facebook" href="#"><FaFacebookF /></a>
+            <a aria-label="twitter" href="#"><FaTwitter /></a>
+            <a aria-label="google" href="#"><FaGooglePlusG /></a>
+            <a aria-label="instagram" href="#"><FaInstagram /></a>
           </div>
         </div>
 
         <div>
           <h4>Quick Links</h4>
-          <ul>
+          <ul className="footer-links">
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/plans">Plans</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
@@ -40,27 +44,26 @@ const Footer: React.FC = () => {
 
         <div>
           <h4>Get in Touch</h4>
-          <ul>
-            <li><strong>Call:</strong> 1300 JORTEL (567 835)</li>
-            <li><strong>Email:</strong> info@jortel.com.au</li>
-            <li><strong>Address:</strong> Suite 7B, 256F New Line Road, Dural NSW 2158</li>
+          <ul className="muted">
+            <li><strong>Call Us</strong><br />1300 JORTEL (567 835)</li>
+            <li><strong>Email</strong><br />info@jortel.com.au</li>
+            <li><strong>Address</strong><br />Suite 7B, 256F New Line Road, Dural NSW 2158</li>
           </ul>
         </div>
 
         <div>
-          <h4>Subscribe</h4>
-          <p>Stay up to date with our latest news and products</p>
-          <form className="subscribe-form">
-            <input type="email" placeholder="Type your email" />
-            <button type="submit">➤</button>
+          <h4>Subscribe Now</h4>
+          <p className="muted">Stay up to date with our latest news and products</p>
+          <form className="subscribe-form" onSubmit={(e) => e.preventDefault()}>
+            <input aria-label="email" type="email" placeholder="Type your Email" />
+            <button type="submit" title="Subscribe">➤</button>
           </form>
         </div>
       </div>
+
       <div className="footer-bottom">
         © {new Date().getFullYear()} Jortel Communications. All rights reserved.
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

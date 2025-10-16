@@ -1,0 +1,30 @@
+.muted { color: var(--muted); }
+.center { text-align: center; }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-top: 18px;
+}
+
+.card.pale {
+  background: #f8fafc;
+  padding: 18px;
+  border-radius: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 8px;
+}
+
+.contact-form textarea { min-height: 120px; }
+
+@media (max-width: 900px) {
+  .two-col { grid-template-columns: 1fr; }
+}

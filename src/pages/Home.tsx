@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import { FaMobileAlt, FaWifi, FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 
 const BRAND = {
   deep: "#142168",
@@ -45,7 +47,16 @@ export default function Home(): JSX.Element {
   const [checkingNbn, setCheckingNbn] = useState(false);
   const [nbnResult, setNbnResult] = useState<any>(null);
   const [nbnError, setNbnError] = useState<string | null>(null);
+  const navigate = useNavigate();
   const debounceRef = useRef<number | null>(null);
+  
+  // ✅ Navigate to Plans page with detected NBN type
+  const handleViewPlans = (techType: string) => {
+    if (!techType) return;
+    navigate("/plans", { state: { nbnType: techType } });
+  };
+
+
 
   useEffect(() => {
     return () => {
@@ -118,6 +129,24 @@ export default function Home(): JSX.Element {
     setNbnError("Missing RapidAPI key. Set REACT_APP_RAPIDAPI_KEY in your .env file.");
     return;
   }
+
+const handleSelect = (address: string) => {
+  setQuery(address);
+  setSuggestions([]);
+  setShowSuggestions(false);
+  checkNbnAvailability(address);
+};
+
+const handleViewPlans = () => {
+  const type =
+    nbnResult?.addressDetail?.techType ||
+    nbnResult?.servingArea?.techType ||
+    "";
+  console.log("Redirecting to plans:", type);
+  if (type) navigate("/plans", { state: { nbnType: type } });
+};
+
+
 
   setCheckingNbn(true);
   try {
@@ -333,6 +362,46 @@ export default function Home(): JSX.Element {
       </div>
     )}
 
+{(nbnResult.addressDetail?.techType || nbnResult.servingArea?.techType) && (
+  <div style={{ textAlign: "center", marginTop: 24 }}>
+    <button
+      onClick={() =>
+        handleViewPlans(
+          nbnResult?.addressDetail?.techType ||
+          nbnResult?.servingArea?.techType ||
+          ""
+        )
+      }
+      style={{
+        background: "linear-gradient(90deg, #1B5FC1, #142168)",
+        color: "white",
+        padding: "10px 26px",
+        borderRadius: 999,
+        border: "none",
+        fontWeight: 600,
+        cursor: "pointer",
+        transition: "background 0.25s ease",
+      }}
+      onMouseEnter={(e) =>
+        ((e.target as HTMLButtonElement).style.background =
+          "linear-gradient(90deg, #142168, #1B5FC1)")
+      }
+      onMouseLeave={(e) =>
+        ((e.target as HTMLButtonElement).style.background =
+          "linear-gradient(90deg, #1B5FC1, #142168)")
+      }
+    >
+      View{" "}
+      {nbnResult?.addressDetail?.techType ||
+        nbnResult?.servingArea?.techType ||
+        "NBN"}{" "}
+      Plans →
+    </button>
+  </div>
+)}
+
+
+
     {/* Clear button */}
     <div style={{ textAlign: "center", marginTop: 20 }}>
       <button
@@ -363,8 +432,6 @@ export default function Home(): JSX.Element {
     </div>
   </div>
 )}
-
-
 
           </div>
         </div>
