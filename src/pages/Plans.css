@@ -1,10 +1,29 @@
 /* === Page Base === */
 .plans-page {
-  background: linear-gradient(180deg, #f8faff 0%, #eef3ff 100%);
+   background: radial-gradient(circle at 20% 30%, #f8faff, #eef3ff);
+  background-size: cover;
   min-height: 100vh;
   padding-bottom: 80px;
   color: #142168;
   font-family: 'Inter', sans-serif;
+}
+
+.plans-hero-banner {
+  background: linear-gradient(135deg, #142168 0%, #1b5fc1 100%);
+  color: white;
+  text-align: center;
+  padding: 80px 20px 60px;
+  border-radius: 0 0 40px 40px;
+  box-shadow: 0 10px 30px rgba(20, 33, 104, 0.25);
+}
+.plans-hero-banner h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.plans-hero-banner p {
+  font-size: 1.1rem;
+  opacity: 0.9;
 }
 
 /* === Header === */
@@ -100,19 +119,17 @@
 }
 
 .plan-card {
-  background: white;
-  border-radius: 16px;
-  padding: 30px 24px;
-  text-align: center;
-  box-shadow: 0 5px 18px rgba(20, 33, 104, 0.08);
-  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 20px rgba(20, 33, 104, 0.1);
   transition: all 0.25s ease;
 }
-
 .plan-card:hover {
-  border-color: #1b5fc1;
-  box-shadow: 0 8px 25px rgba(27, 95, 193, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(20, 33, 104, 0.18);
 }
+
 
 .plan-card.popular {
   border-color: #1b5fc1;
@@ -219,5 +236,153 @@
   }
   .compare-section {
     padding: 20px;
+  }
+}
+
+.advantages-section {
+  padding: 80px 20px;
+  text-align: center;
+  border-radius: 20px;
+  margin-top: 60px;
+}
+
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.adv-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px 24px;
+  box-shadow: 0 6px 20px rgba(20, 33, 104, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.adv-card:hover {
+  box-shadow: 0 10px 28px rgba(20, 33, 104, 0.15);
+}
+
+.adv-icon {
+  font-size: 38px;
+  color: #1b5fc1;
+  margin-bottom: 14px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.adv-card:hover .adv-icon {
+  color: #142168;
+  transform: scale(1.1);
+}
+
+/* Advisor Panel */
+.advisor-panel {
+  background: linear-gradient(90deg, var(--brand-deep), var(--brand-accent));
+  color: white;
+  text-align: center;
+  padding: 80px 24px;
+  margin-top: 80px;
+  border-radius: 0;
+}
+.advisor-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.advisor-content h2 {
+  font-size: 32px;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.advisor-content p {
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  opacity: 0.95;
+}
+.advisor-content .btn.primary {
+  background: white;
+  color: var(--brand-deep);
+  padding: 12px 30px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+.advisor-content .btn.primary:hover {
+  background: #f1f5ff;
+  transform: translateY(-2px);
+}
+
+/* QUICK HELP SIDEBAR */
+.quick-help {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 90;
+}
+
+.help-bubble {
+  background: linear-gradient(90deg, var(--brand-deep), var(--brand-accent));
+  color: white;
+  padding: 18px 22px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(27, 95, 193, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: 260px;
+  font-size: 14.5px;
+  line-height: 1.45;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.help-bubble .close-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.help-bubble .close-btn:hover {
+  opacity: 1;
+}
+
+.help-bubble h4 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.help-bubble button.btn.small {
+  background: white;
+  color: var(--brand-deep);
+  font-weight: 600;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 14px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.help-bubble button.btn.small:hover {
+  background: #f0f4ff;
+  transform: scale(1.05);
+}
+
+@media (max-width: 700px) {
+  .help-bubble {
+    max-width: 220px;
+    padding: 14px 18px;
+    font-size: 13.5px;
   }
 }

@@ -39,3 +39,6 @@ export default function Contact(): JSX.Element {
     </main>
   );
 }
+<form id="contact-form" className="contact-form">
+  {/* form fields */}
+</form>
