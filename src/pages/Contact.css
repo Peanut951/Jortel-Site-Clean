@@ -1,0 +1,138 @@
+.page.contact-page {
+  background: radial-gradient(circle at 20% 30%, #f8faff, #eef3ff);
+  color: #142168;
+  padding-bottom: 80px;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+.contact-hero {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+.contact-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+.contact-hero p {
+  font-size: 1.1rem;
+  opacity: 0.85;
+}
+
+.contact-wrapper {
+  display: flex;
+  max-width: 1000px;
+  margin: 0 auto 60px;
+  gap: 40px;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 260px;
+}
+.contact-info h2 {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+}
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+}
+.contact-info li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.support-links {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.support-links a {
+  color: #1b5fc1;
+  text-decoration: none;
+  font-weight: 600;
+}
+.support-links a:hover {
+  text-decoration: underline;
+}
+
+.contact-form-wrapper {
+  flex: 1;
+  min-width: 300px;
+}
+.contact-form {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 6px 20px rgba(20, 33, 104, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #142168;
+}
+.form-group input,
+.form-group textarea {
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #1f2937;
+  transition: border-color 0.2s ease;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #1b5fc1;
+  outline: none;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, #1b5fc1, #142168);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  align-self: start;
+  transition: background 0.25s ease, transform 0.2s;
+}
+.btn.primary:hover {
+  background: linear-gradient(90deg, #142168, #1b5fc1);
+  transform: translateY(-2px);
+}
+.btn.primary[disabled] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.form-feedback {
+  margin-top: 12px;
+  font-size: 0.95rem;
+}
+.form-feedback.success {
+  color: #2c7a7b;
+}
+.form-feedback.error {
+  color: #c53030;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-wrapper {
+    flex-direction: column;
+  }
+}
